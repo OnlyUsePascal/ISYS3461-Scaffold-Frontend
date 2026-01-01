@@ -20,9 +20,12 @@ export const ROUTES = {
 export const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 export const API_ENDPOINTS = {
+  AUTH: {
+    SIGN_IN: `${API_BASE}/user/auth/sign-in`,
+    SIGN_UP: `${API_BASE}/user/auth/sign-up`,
+  },
   USER: {
-    SIGN_IN: `${API_BASE}/user/sign-in`,
-    SIGN_UP: `${API_BASE}/user/sign-up`,
+    ME: `${API_BASE}/user/user/me`,
   },
   ALPHA: {
     LIST: `${API_BASE}/alpha`,

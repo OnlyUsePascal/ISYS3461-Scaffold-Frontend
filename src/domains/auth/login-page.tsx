@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import useSignIn from "./use-login";
 
 export default function SignInPage() {
-  const { isLoading, error, signInForm, signInSchema, onSignIn } = useSignIn();
+  const { error, form, onSubmit } = useSignIn();
 
   return (
     <div className="w-full place-items-center">
@@ -32,13 +32,13 @@ export default function SignInPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Form {...signInForm}>
+          <Form {...form}>
             <form
-              onSubmit={signInForm.handleSubmit(onSignIn)}
+              onSubmit={form.handleSubmit(onSubmit)}
               className="space-y-4"
             >
               <FormField
-                control={signInForm.control}
+                control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
@@ -52,7 +52,7 @@ export default function SignInPage() {
               />
 
               <FormField
-                control={signInForm.control}
+                control={form.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>

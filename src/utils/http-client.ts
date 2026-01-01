@@ -1,5 +1,6 @@
 import axios, { type AxiosInstance, type AxiosResponse } from "axios";
 import { API_BASE } from "./constants";
+import { useAuthStore } from "@/stores/auth-store";
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: API_BASE,
@@ -12,7 +13,8 @@ const apiClient: AxiosInstance = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("auth_token");
+    // attach jwt from local storag
+    const token = useAuthStore.getState().token;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
