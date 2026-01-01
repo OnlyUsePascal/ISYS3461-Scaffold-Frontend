@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import type { UpdateAlphaDialogProps } from "./update-alpha-dialog";
@@ -20,8 +20,8 @@ export default function useUpdateAlpha(pr: UpdateAlphaDialogProps) {
   const updateForm = useForm<z.infer<typeof updateSchema>>({
     resolver: zodResolver(updateSchema),
     defaultValues: {
-      name: pr.alpha.name,
-      price: pr.alpha.price,
+      name: "???",
+      price: 1.11,
     },
   });
 
@@ -29,7 +29,7 @@ export default function useUpdateAlpha(pr: UpdateAlphaDialogProps) {
     console.log(`update data: ${JSON.stringify(data)}`);
 
     try {
-      const res = await alphaService.updateAlpha(pr.alpha.id, data);
+      const res = await alphaService.updateAlpha(pr.alphaId, data);
       console.log(res);
       setMessage("Alpha updated successfully");
 
@@ -45,6 +45,21 @@ export default function useUpdateAlpha(pr: UpdateAlphaDialogProps) {
       setMessage(errorMessage);
     }
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    (async () => {
+      try {
+        const res = await alphaService.getAlpha(pr.alphaId);
+
+        console.log(res);
+        updateForm.setValue("name", res.data.name);
+        updateForm.setValue("price", res.data.price);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [isOpen]);
 
   return {
     isOpen,

@@ -22,6 +22,13 @@ export const alphaService = {
     return res.data;
   },
 
+  async getAlpha(id: string) {
+    const res = await apiClient.get<GenericResponseDto<Alpha>>(
+      API_ENDPOINTS.ALPHA.GET(id)
+    );
+    return res.data;
+  },
+
   async createAlpha(body: CreateAlphaReq) {
     const res = await apiClient.post<GenericResponseDto<string>>(
       API_ENDPOINTS.ALPHA.CREATE,

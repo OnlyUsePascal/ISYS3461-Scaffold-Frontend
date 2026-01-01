@@ -28,7 +28,7 @@ export function AlphaTableRow(pr: AlphaTableRowProps) {
             Delete
           </Button>
           <UpdateAlphaDialog
-            {...{ alpha: pr.alpha, refreshAlphas: pr.refreshAlphas }}
+            {...{ alphaId: pr.alpha.id, refreshAlphas: pr.refreshAlphas }}
           />
         </div>
       </TableCell>

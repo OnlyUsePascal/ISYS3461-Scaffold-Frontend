@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,9 +7,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import type { Alpha } from "../alpha-types";
-import useUpdateAlpha from "./use-update-alpha";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -20,9 +17,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { DialogClose } from "@radix-ui/react-dialog";
+import useUpdateAlpha from "./use-update-alpha";
 
 export interface UpdateAlphaDialogProps {
-  alpha: Alpha;
+  alphaId: string;
   refreshAlphas: () => Promise<void>;
 }
 
@@ -40,7 +38,7 @@ export default function UpdateAlphaDialog(pr: UpdateAlphaDialogProps) {
 
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Update Property {pr.alpha.id}</DialogTitle>
+          <DialogTitle>Update Property {pr.alphaId}</DialogTitle>
         </DialogHeader>
 
         <Form {...updateForm}>
