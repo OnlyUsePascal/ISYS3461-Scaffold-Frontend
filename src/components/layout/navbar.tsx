@@ -38,6 +38,13 @@ export default function NavBar() {
             Beta
           </Link>
 
+          <Link
+            to={ROUTES.COUNTRY}
+            className="text-sm font-medium hover:underline"
+          >
+            Country
+          </Link>
+
           {!isAuthenticated ? (
             <Link
               to={ROUTES.LOGIN}

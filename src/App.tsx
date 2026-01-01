@@ -6,6 +6,7 @@ import ErrorPage from "./components/page/error-page";
 import { ERRORS, ROUTES } from "./utils/constants";
 import ProtectedRoute from "./routes/protected-route";
 import BetaPage from "./domains/beta/beta-page";
+import CountryPage from "./domains/country/country-page";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           />
           <Route path={ROUTES.ALPHA} element={<AlphaPage />} />
           <Route path={ROUTES.BETA} element={<BetaPage />} />
+          <Route path={ROUTES.COUNTRY} element={<CountryPage />} />
           <Route path={ROUTES.LOGIN} element={<SignInPage />} />
           <Route path="*" element={<ErrorPage {...ERRORS.NOT_FOUND} />} />
         </Route>

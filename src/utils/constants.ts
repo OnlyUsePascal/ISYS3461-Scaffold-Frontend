@@ -12,9 +12,9 @@ export const ERRORS = {
 export const ROUTES = {
   LANDING: "/",
   LOGIN: "/login",
-  SIGNUP: "/login",
   ALPHA: "/alpha",
   BETA: "/beta",
+  COUNTRY: "/country",
 } as const;
 
 export const API_BASE = import.meta.env.VITE_API_BASE_URL;
