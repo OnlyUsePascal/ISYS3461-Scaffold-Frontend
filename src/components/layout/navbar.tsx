@@ -1,19 +1,17 @@
+import { useAuthStore } from "@/stores/auth-store";
 import { ROUTES } from "@/utils/constants";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export default function NavBar() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const isAuthenticated = useAuthStore((st) => st.isAuthenticated);
+  const signOut = useAuthStore((st) => st.signOut);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    try {
-      console.log("signing out");
-      // const data = await logout();
-      // console.log(data);
-      // await checkAuth();
-    } catch (error) {
-      console.log(error);
-    }
+    console.log("signing out");
+    signOut();
+    navigate(ROUTES.LOGIN);
   };
 
   return (

@@ -4,7 +4,7 @@ export const ERRORS = {
     message: "The page you are looking for does not exist",
   },
   FORBIDDEN: {
-    title: "401 - Page Forbidden",
+    title: "403 - Page Forbidden",
     message: "You dont have access to this page",
   },
 } as const;
